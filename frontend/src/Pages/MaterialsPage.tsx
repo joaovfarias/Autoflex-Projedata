@@ -192,7 +192,7 @@ export default function MaterialsPage() {
               setEditingIndex(null);
               setIsModalOpen(true);
             }}
-            className="rounded-md bg-[#3246ff] px-4 py-2 text-sm font-medium text-white hover:bg-[#005a66]"
+            className="rounded-md bg-[#3246ff] px-4 py-2 text-sm font-medium text-white hover:bg-[#2539c4]"
           >
             Add new Material
           </button>
