@@ -94,7 +94,7 @@ export default function Product({
 
         <div>
           <p className="text-xs uppercase tracking-wide text-gray-500">Value</p>
-          <p className="text-lg font-bold text-[#006D7A]">
+          <p className="text-lg font-bold text-[#3246ff]">
             ${value.toFixed(2)}
           </p>
         </div>

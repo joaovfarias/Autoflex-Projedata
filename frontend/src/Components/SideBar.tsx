@@ -12,7 +12,7 @@ export default function Sidebar() {
             <NavLink
               to="/products"
               className={({ isActive }) =>
-                `block py-2 px-4 rounded hover:bg-[#e0f7fa] ${isActive ? "bg-[#e0f7fa]" : ""}`
+                `block py-2 px-4 rounded hover:bg-[#266eda13] ${isActive ? "bg-[#266eda13]" : ""}`
               }
             >
               <div className="flex items-center">
@@ -25,7 +25,7 @@ export default function Sidebar() {
             <NavLink
               to="/materials"
               className={({ isActive }) =>
-                `block py-2 px-4 rounded hover:bg-[#e0f7fa] ${isActive ? "bg-[#e0f7fa]" : ""}`
+                `block py-2 px-4 rounded hover:bg-[#266eda13] ${isActive ? "bg-[#266eda13]" : ""}`
               }
             >
               <div className="flex items-center">
@@ -38,7 +38,7 @@ export default function Sidebar() {
             <NavLink
               to="/suggestions"
               className={({ isActive }) =>
-                `block py-2 px-4 rounded hover:bg-[#e0f7fa] ${isActive ? "bg-[#e0f7fa]" : ""}`
+                `block py-2 px-4 rounded hover:bg-[#266eda13] ${isActive ? "bg-[#266eda13]" : ""}`
               }
             >
               <div className="flex items-center">

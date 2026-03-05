@@ -55,7 +55,7 @@ export default function SuggestionPage() {
     <section className="w-full">
       <h1 className="mb-6 text-xl font-semibold">
         Total production value:{" "}
-        <span className="text-[#006D7A]">
+        <span className="text-[#3246ff]">
           ${summary.totalProductionValue.toFixed(2)}
         </span>
       </h1>
@@ -97,13 +97,13 @@ export default function SuggestionPage() {
                   <p className="text-xs uppercase tracking-wide text-gray-500">
                     Value
                   </p>
-                  <p className="text-lg font-bold text-[#006D7A]">
+                  <p className="text-lg font-bold text-[#3246ff]">
                     ${item.totalValue.toFixed(2)}
                   </p>
                 </div>
               </div>
 
-              <div className="absolute bottom-4 right-3 rounded-md bg-[#006D7A] px-2 py-1 text-xs font-semibold text-white">
+              <div className="absolute bottom-4 right-3 rounded-md bg-[#3246ff] px-2 py-1 text-xs font-semibold text-white">
                 {item.quantityPossible}x
               </div>
             </article>

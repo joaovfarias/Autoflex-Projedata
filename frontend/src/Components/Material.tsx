@@ -90,7 +90,7 @@ export default function Material({
           <p className="text-xs uppercase tracking-wide text-gray-500">
             Quantity
           </p>
-          <p className="text-lg font-bold text-[#006D7A]">{quantity}</p>
+          <p className="text-lg font-bold text-[#3246ff]">{quantity}</p>
         </div>
       </div>
     </article>

@@ -73,7 +73,7 @@ export default function ProductFormModal({
               type="text"
               value={code}
               onChange={(e) => onCodeChange(e.target.value)}
-              className="w-full rounded-md border border-gray-300 px-3 py-2 outline-none focus:border-[#006D7A]"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 outline-none focus:border-[#3246ff]"
               required
             />
           </div>
@@ -90,7 +90,7 @@ export default function ProductFormModal({
               type="text"
               value={name}
               onChange={(e) => onNameChange(e.target.value)}
-              className="w-full rounded-md border border-gray-300 px-3 py-2 outline-none focus:border-[#006D7A]"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 outline-none focus:border-[#3246ff]"
               required
             />
           </div>
@@ -109,7 +109,7 @@ export default function ProductFormModal({
               min="0"
               value={value}
               onChange={(e) => onValueChange(e.target.value)}
-              className="w-full rounded-md border border-gray-300 px-3 py-2 outline-none focus:border-[#006D7A]"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 outline-none focus:border-[#3246ff]"
               required
             />
           </div>
@@ -122,7 +122,7 @@ export default function ProductFormModal({
               <button
                 type="button"
                 onClick={onAddBlueprintRow}
-                className="cursor-pointer rounded-md border border-[#006D7A] px-2 py-1 text-xs font-medium text-[#006D7A] hover:bg-[#e6f3f5]"
+                className="cursor-pointer rounded-md border border-[#3246ff] px-2 py-1 text-xs font-medium text-[#3246ff] hover:bg-[#e6f3f5]"
               >
                 + Add material
               </button>
@@ -149,7 +149,7 @@ export default function ProductFormModal({
                           e.target.value,
                         )
                       }
-                      className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-[#006D7A]"
+                      className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-[#3246ff]"
                     >
                       <option value="">Select raw material</option>
                       {rawMaterials.map((material) => (
@@ -176,7 +176,7 @@ export default function ProductFormModal({
                           e.target.value,
                         )
                       }
-                      className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-[#006D7A]"
+                      className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-[#3246ff]"
                       placeholder="Qt"
                     />
                   </div>
@@ -206,7 +206,7 @@ export default function ProductFormModal({
             </button>
             <button
               type="submit"
-              className="cursor-pointer rounded-md bg-[#006D7A] px-4 py-2 text-sm font-medium text-white hover:bg-[#005a66]"
+              className="cursor-pointer rounded-md bg-[#3246ff] px-4 py-2 text-sm font-medium text-white hover:bg-[#2a3ae0]"
             >
               {isEditing ? "Update" : "Save"}
             </button>

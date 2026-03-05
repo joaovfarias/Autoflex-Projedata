@@ -462,7 +462,7 @@ export default function ProductsPage() {
               setEditingIndex(null);
               setIsModalOpen(true);
             }}
-            className="rounded-md bg-[#006D7A] px-4 py-2 text-sm font-medium text-white hover:bg-[#005a66]"
+            className="rounded-md bg-[#3246ff] px-4 py-2 text-sm font-medium text-white hover:bg-[#2a3ae0]"
           >
             Add new Product
           </button>

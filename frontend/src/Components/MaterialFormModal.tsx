@@ -47,7 +47,7 @@ export default function MaterialFormModal({
               type="text"
               value={code}
               onChange={(e) => onCodeChange(e.target.value)}
-              className="w-full rounded-md border border-gray-300 px-3 py-2 outline-none focus:border-[#006D7A]"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 outline-none focus:border-[#3246ff]"
               required
             />
           </div>
@@ -64,7 +64,7 @@ export default function MaterialFormModal({
               type="text"
               value={name}
               onChange={(e) => onNameChange(e.target.value)}
-              className="w-full rounded-md border border-gray-300 px-3 py-2 outline-none focus:border-[#006D7A]"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 outline-none focus:border-[#3246ff]"
               required
             />
           </div>
@@ -83,7 +83,7 @@ export default function MaterialFormModal({
               step="1"
               value={quantity}
               onChange={(e) => onQuantityChange(e.target.value)}
-              className="w-full rounded-md border border-gray-300 px-3 py-2 outline-none focus:border-[#006D7A]"
+              className="w-full rounded-md border border-gray-300 px-3 py-2 outline-none focus:border-[#3246ff]"
               required
             />
           </div>
@@ -98,7 +98,7 @@ export default function MaterialFormModal({
             </button>
             <button
               type="submit"
-              className="rounded-md bg-[#006D7A] px-4 py-2 text-sm font-medium text-white hover:bg-[#005a66]"
+              className="rounded-md bg-[#3246ff] px-4 py-2 text-sm font-medium text-white hover:bg-[#2a3ae0]"
             >
               {isEditing ? "Update" : "Save"}
             </button>
