@@ -29,10 +29,7 @@ export default function SuggestionPage() {
         setIsLoading(true);
         setError(null);
 
-        let response = await fetch(`${API_BASE_URL}/productions`);
-        if (!response.ok) {
-          response = await fetch(`${API_BASE_URL}/production`);
-        }
+        const response = await fetch(`${API_BASE_URL}/production`);
 
         if (!response.ok) {
           setError("Failed to load production suggestions.");
