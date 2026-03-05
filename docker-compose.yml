@@ -38,18 +38,18 @@ services:
       SPRING_DATASOURCE_PASSWORD: admin123
     restart: unless-stopped
 
-  # frontend:
-  #   build: ./frontend
-  #   container_name: react-app
-  #   ports:
-  #     - "5173:5173"
-  #   depends_on:
-  #     - backend-spring
-  #   volumes:
-  #     - ./frontend:/app
-  #     - /app/node_modules
-  #   environment:
-  #     - CHOKIDAR_USEPOLLING=true
+  frontend:
+    build: ./frontend
+    container_name: react-app
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend-spring
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
 
 volumes:
   oracle-data:

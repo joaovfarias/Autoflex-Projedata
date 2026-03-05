@@ -105,7 +105,7 @@ export default function ProductFormModal({
             <input
               id="value"
               type="number"
-              step="0.01"
+              step="1"
               min="0"
               value={value}
               onChange={(e) => onValueChange(e.target.value)}
