@@ -1,6 +1,7 @@
 import { IoMdSearch } from "react-icons/io";
 import { FaUser } from "react-icons/fa";
 import { IoSettingsOutline } from "react-icons/io5";
+import projedata_logo from "../assets/projedata_logo.png";
 
 export default function Header() {
   return (
@@ -9,7 +10,16 @@ export default function Header() {
         className="flex items-center hover:cursor-pointer"
         onClick={() => (window.location.href = "/")}
       >
-        <span className="text-[#3246ff] text-2xl font-bold mr-2">FlexAuto</span>
+        <div className="flex items-center justify-center">
+          <img
+            src={projedata_logo}
+            alt="Projedata Logo"
+            className="w-10 h-10 mr-2"
+          />
+          <span className="text-[#3246ff] text-2xl font-bold mr-2">
+            FlexAuto
+          </span>
+        </div>
       </div>
       <div className="relative w-1/3">
         <input
