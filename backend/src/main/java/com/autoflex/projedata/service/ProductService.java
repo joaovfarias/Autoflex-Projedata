@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.autoflex.projedata.entity.Product;
+import com.autoflex.projedata.exception.DuplicateProductCodeException;
 import com.autoflex.projedata.repository.ProductRepository;
 
 @Service
@@ -26,11 +27,20 @@ public class ProductService {
     }
 
     public Product save(Product product) {
+        if (repository.existsByCode(product.getCode())) {
+            throw new DuplicateProductCodeException("Product code already exists");
+        }
+
         return repository.save(product);
     }
 
     public Product update(Long id, Product updated) {
         Product product = findById(id);
+
+        if (!product.getCode().equals(updated.getCode()) && repository.existsByCode(updated.getCode())) {
+            throw new DuplicateProductCodeException("Product code already exists");
+        }
+
         product.setCode(updated.getCode());
         product.setName(updated.getName());
         product.setValue(updated.getValue());

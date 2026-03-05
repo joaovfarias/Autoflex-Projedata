@@ -1,28 +1,22 @@
 import { useEffect, useRef, useState } from "react";
 import { HiOutlineDotsVertical } from "react-icons/hi";
-import { LuBox } from "react-icons/lu";
+import { TbWood } from "react-icons/tb";
 
-type ProductProps = {
+type MaterialProps = {
   code: string;
   name: string;
-  value: number;
-  materials: Array<{
-    rawMaterialCode: string;
-    rawMaterialName: string;
-    requiredQuantity: number;
-  }>;
+  quantity: number;
   onEdit: () => void;
   onDelete: () => void;
 };
 
-export default function Product({
+export default function Material({
   code,
   name,
-  value,
-  materials,
+  quantity,
   onEdit,
   onDelete,
-}: ProductProps) {
+}: MaterialProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -38,13 +32,13 @@ export default function Product({
   }, []);
 
   return (
-    <article className="relative min-h-56 w-56 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
+    <article className="relative h-56 w-56 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
       <div ref={menuRef} className="absolute right-2 top-2">
         <div className="flex items-center gap-39">
-          <LuBox size={18} className="text-gray-400" />
+          <TbWood size={18} className="text-gray-400" />
           <button
             type="button"
-            aria-label="Open product menu"
+            aria-label="Open material menu"
             onClick={() => setMenuOpen((prev) => !prev)}
             className="rounded-md p-1 text-gray-600 hover:bg-gray-100"
           >
@@ -81,7 +75,7 @@ export default function Product({
         </div>
       </div>
 
-      <div className="flex h-full flex-col gap-3 pt-6">
+      <div className="flex h-full flex-col justify-between pt-6">
         <div>
           <p className="text-xs uppercase tracking-wide text-gray-500">Code</p>
           <p className="font-medium text-gray-900">{code}</p>
@@ -93,30 +87,10 @@ export default function Product({
         </div>
 
         <div>
-          <p className="text-xs uppercase tracking-wide text-gray-500">Value</p>
-          <p className="text-lg font-bold text-[#006D7A]">
-            ${value.toFixed(2)}
-          </p>
-        </div>
-
-        <div>
           <p className="text-xs uppercase tracking-wide text-gray-500">
-            Composition
+            Quantity
           </p>
-          {materials.length === 0 ? (
-            <p className="text-xs text-gray-500">No materials linked.</p>
-          ) : (
-            <ul className="mt-1 space-y-1 text-xs text-gray-700">
-              {materials.map((material) => (
-                <li
-                  key={`${material.rawMaterialCode}-${material.rawMaterialName}`}
-                >
-                  {material.rawMaterialCode} ({material.rawMaterialName}) x{" "}
-                  {material.requiredQuantity}
-                </li>
-              ))}
-            </ul>
-          )}
+          <p className="text-lg font-bold text-[#006D7A]">{quantity}</p>
         </div>
       </div>
     </article>

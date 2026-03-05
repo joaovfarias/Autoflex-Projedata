@@ -11,4 +11,6 @@ import com.autoflex.projedata.entity.Product;
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
     Optional<Product> findByCode(String code);
+
+    boolean existsByCode(String code);
 }

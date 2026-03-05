@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Product from "../Components/Product";
 import ProductFormModal from "../Components/ProductFormModal";
+import { Alert, Snackbar } from "@mui/material";
 
 type ProductItem = {
   id?: number;
@@ -66,6 +67,9 @@ export default function ProductsPage() {
   const [code, setCode] = useState("");
   const [name, setName] = useState("");
   const [value, setValue] = useState("");
+
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
 
   useEffect(() => {
     async function fetchProductsPageData() {
@@ -303,6 +307,12 @@ export default function ProductsPage() {
           );
 
           if (!response.ok) {
+            if (response.status === 409) {
+              setSnackbarMessage(
+                "Product code already exists. Please choose a different code.",
+              );
+              setSnackbarOpen(true);
+            }
             return;
           }
 
@@ -328,6 +338,12 @@ export default function ProductsPage() {
         });
 
         if (!response.ok) {
+          if (response.status === 409) {
+            setSnackbarMessage(
+              "Product code already exists. Please choose a different code.",
+            );
+            setSnackbarOpen(true);
+          }
           return;
         }
 
@@ -398,6 +414,25 @@ export default function ProductsPage() {
     }
 
     try {
+      const assignedMaterials = materialsByProduct[id] ?? [];
+
+      if (assignedMaterials.length > 0) {
+        const deleteRelationsResponses = await Promise.all(
+          assignedMaterials.map((material) =>
+            fetch(
+              `${API_BASE_URL}/product-raw-materials?productId=${id}&rawMaterialId=${material.rawMaterialId}`,
+              {
+                method: "DELETE",
+              },
+            ),
+          ),
+        );
+
+        if (deleteRelationsResponses.some((response) => !response.ok)) {
+          return;
+        }
+      }
+
       const response = await fetch(`${API_BASE_URL}/products/${id}`, {
         method: "DELETE",
       });
@@ -418,63 +453,80 @@ export default function ProductsPage() {
   }
 
   return (
-    <section className="w-full">
-      <div className="mb-6 flex items-center justify-between">
-        <button
-          type="button"
-          onClick={() => {
-            setEditingIndex(null);
-            setIsModalOpen(true);
-          }}
-          className="rounded-md bg-[#006D7A] px-4 py-2 text-sm font-medium text-white hover:bg-[#005a66]"
-        >
-          Add new Product
-        </button>
-      </div>
-
-      {isLoadingProducts ? (
-        <p className="text-gray-500">Loading products...</p>
-      ) : loadProductsError ? (
-        <p className="text-red-600">{loadProductsError}</p>
-      ) : products.length === 0 ? (
-        <p className="text-gray-500">No products yet.</p>
-      ) : (
-        <div className="flex flex-wrap gap-4">
-          {products.map((product, index) => (
-            <Product
-              key={`${product.code}-${index}`}
-              code={product.code}
-              name={product.name}
-              value={product.value}
-              materials={
-                product.id !== undefined
-                  ? (materialsByProduct[product.id] ?? [])
-                  : []
-              }
-              onEdit={() => handleEdit(index)}
-              onDelete={() => handleDelete(product.id, index)}
-            />
-          ))}
+    <>
+      <section className="w-full">
+        <div className="mb-6 flex items-center justify-between">
+          <button
+            type="button"
+            onClick={() => {
+              setEditingIndex(null);
+              setIsModalOpen(true);
+            }}
+            className="rounded-md bg-[#006D7A] px-4 py-2 text-sm font-medium text-white hover:bg-[#005a66]"
+          >
+            Add new Product
+          </button>
         </div>
-      )}
 
-      <ProductFormModal
-        isOpen={isModalOpen}
-        isEditing={editingIndex !== null}
-        code={code}
-        name={name}
-        value={value}
-        blueprintRows={blueprintRows}
-        rawMaterials={rawMaterials}
-        onSubmit={handleSubmit}
-        onCancel={resetForm}
-        onCodeChange={setCode}
-        onNameChange={setName}
-        onValueChange={setValue}
-        onAddBlueprintRow={addBlueprintRow}
-        onRemoveBlueprintRow={removeBlueprintRow}
-        onUpdateBlueprintRow={updateBlueprintRow}
-      />
-    </section>
+        {isLoadingProducts ? (
+          <p className="text-gray-500">Loading products...</p>
+        ) : loadProductsError ? (
+          <p className="text-red-600">{loadProductsError}</p>
+        ) : products.length === 0 ? (
+          <p className="text-gray-500">No products yet.</p>
+        ) : (
+          <div className="flex flex-wrap gap-4">
+            {products.map((product, index) => (
+              <Product
+                key={`${product.code}-${index}`}
+                code={product.code}
+                name={product.name}
+                value={product.value}
+                materials={
+                  product.id !== undefined
+                    ? (materialsByProduct[product.id] ?? [])
+                    : []
+                }
+                onEdit={() => handleEdit(index)}
+                onDelete={() => handleDelete(product.id, index)}
+              />
+            ))}
+          </div>
+        )}
+
+        <ProductFormModal
+          isOpen={isModalOpen}
+          isEditing={editingIndex !== null}
+          code={code}
+          name={name}
+          value={value}
+          blueprintRows={blueprintRows}
+          rawMaterials={rawMaterials}
+          onSubmit={handleSubmit}
+          onCancel={resetForm}
+          onCodeChange={setCode}
+          onNameChange={setName}
+          onValueChange={setValue}
+          onAddBlueprintRow={addBlueprintRow}
+          onRemoveBlueprintRow={removeBlueprintRow}
+          onUpdateBlueprintRow={updateBlueprintRow}
+        />
+      </section>
+
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={3000}
+        onClose={() => setSnackbarOpen(false)}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      >
+        <Alert
+          onClose={() => setSnackbarOpen(false)}
+          severity="error"
+          sx={{ width: "100%" }}
+        >
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
+    </>
   );
 }

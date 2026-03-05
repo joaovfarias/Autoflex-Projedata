@@ -13,10 +13,10 @@ function App() {
         <Sidebar />
         <main className="flex-1 p-6">
           <Routes>
-            <Route path="/" element={<Navigate to="/files" replace />} />
-            <Route path="/files" element={<ProductsPage />} />
-            <Route path="/trash" element={<MaterialsPage />} />
-            <Route path="/storage" element={<SuggestionPage />} />
+            <Route path="/" element={<Navigate to="/products" replace />} />
+            <Route path="/products" element={<ProductsPage />} />
+            <Route path="/materials" element={<MaterialsPage />} />
+            <Route path="/suggestions" element={<SuggestionPage />} />
           </Routes>
         </main>
       </div>

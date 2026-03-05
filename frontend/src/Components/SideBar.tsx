@@ -10,7 +10,7 @@ export default function Sidebar() {
         <ul>
           <li className="mb-4">
             <NavLink
-              to="/files"
+              to="/products"
               className={({ isActive }) =>
                 `block py-2 px-4 rounded hover:bg-[#e0f7fa] ${isActive ? "bg-[#e0f7fa]" : ""}`
               }
@@ -23,7 +23,7 @@ export default function Sidebar() {
           </li>
           <li className="mb-4">
             <NavLink
-              to="/trash"
+              to="/materials"
               className={({ isActive }) =>
                 `block py-2 px-4 rounded hover:bg-[#e0f7fa] ${isActive ? "bg-[#e0f7fa]" : ""}`
               }
@@ -36,7 +36,7 @@ export default function Sidebar() {
           </li>
           <li className="mb-4">
             <NavLink
-              to="/storage"
+              to="/suggestions"
               className={({ isActive }) =>
                 `block py-2 px-4 rounded hover:bg-[#e0f7fa] ${isActive ? "bg-[#e0f7fa]" : ""}`
               }
