@@ -12,4 +12,6 @@ import com.autoflex.projedata.entity.ProductRawMaterialId;
 public interface ProductRawMaterialRepository extends JpaRepository<ProductRawMaterial, ProductRawMaterialId> {
 
     List<ProductRawMaterial> findByIdProductId(Long productId);
+
+    boolean existsByIdRawMaterialId(Long rawMaterialId);
 }

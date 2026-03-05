@@ -167,6 +167,12 @@ export default function MaterialsPage() {
       });
 
       if (!response.ok) {
+        if (response.status === 400) {
+          setSnackbarMessage(
+            "Cannot delete material linked to products. Please remove linked products first.",
+          );
+          setSnackbarOpen(true);
+        }
         return;
       }
 
@@ -229,7 +235,7 @@ export default function MaterialsPage() {
 
       <Snackbar
         open={snackbarOpen}
-        autoHideDuration={3000}
+        autoHideDuration={4000}
         onClose={() => setSnackbarOpen(false)}
         anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
       >
