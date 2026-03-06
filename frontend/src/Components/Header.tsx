@@ -17,7 +17,7 @@ export default function Header() {
             className="w-10 h-10 mr-2"
           />
           <span className="text-[#3246ff] text-2xl font-bold mr-2">
-            FlexAuto
+            AutoFlex
           </span>
         </div>
       </div>
