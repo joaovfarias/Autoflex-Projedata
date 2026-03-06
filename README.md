@@ -1,6 +1,8 @@
 # AutoFlex
 Aplicação web para gerenciar produtos, matérias-primas e determinal o plano de produção ideal baseado no estoque disponível.
 
+<img src="Autoflex.JPG" alt="Exemplo imagem">
+
 ## 💻 Tech-stack
 Backend
 - Java
